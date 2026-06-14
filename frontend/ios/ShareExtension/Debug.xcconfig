@@ -1,0 +1,5 @@
+#include "../Flutter/Generated.xcconfig"
+#include "../Flutter/Signing.xcconfig"
+#include? "../Flutter/Signing.local.xcconfig"
+
+APP_APS_ENVIRONMENT = development

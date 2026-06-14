@@ -1,0 +1,8 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
+#include "Generated.xcconfig"
+#include "Signing.xcconfig"
+#include? "Signing.local.xcconfig"
+
+// Debug simulator builds use APNs sandbox; release/TestFlight uses production.
+// The shared backend routes each device by its saved apns_environment.
+APP_APS_ENVIRONMENT = development

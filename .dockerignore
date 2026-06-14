@@ -1,0 +1,58 @@
+# VCS
+.git/
+.github/
+.gitignore
+
+# Python
+**/__pycache__/
+*.py[cod]
+*.so
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.nox/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Runtime / local data
+logs/
+data/
+deploy/data/
+deploy/logs/
+tmp/
+*.db
+*.sqlite3
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Frontend artifacts
+node_modules/
+frontend/
+docs/
+skills/
+
+# IDE / local tooling
+.vscode/
+.idea/
+.trae/
+.claude/
+
+# OS
+.DS_Store

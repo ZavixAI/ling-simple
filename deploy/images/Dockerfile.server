@@ -1,0 +1,36 @@
+FROM docker.m.daocloud.io/python:3.11-slim
+
+ENV TZ=Asia/Shanghai \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    PIP_CACHE_DIR=/root/.cache/pip \
+    NPM_CONFIG_REGISTRY=https://registry.npmmirror.com \
+    npm_config_registry=https://registry.npmmirror.com \
+    BUN_INSTALL=/root/.bun \
+    PUPPETEER_SKIP_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
+WORKDIR /app
+
+RUN sed -i 's@deb.debian.org@mirrors.aliyun.com@g' /etc/apt/sources.list.d/debian.sources
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /etc/pip \
+    && printf "[global]\nindex-url = https://mirrors.aliyun.com/pypi/simple\ntrusted-host = mirrors.aliyun.com\n" > /etc/pip.conf
+
+COPY app/requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+COPY deploy/images/entrypoint.sh /usr/local/bin/ling-entrypoint
+RUN chmod +x /usr/local/bin/ling-entrypoint
+
+COPY app /app/app
+
+
+EXPOSE 8000
+
+ENTRYPOINT ["/usr/local/bin/ling-entrypoint"]
+CMD ["python", "app/main.py"]

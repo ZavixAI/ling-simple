@@ -1,0 +1,63 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.python-version
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.nox/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Runtime files
+logs/
+tmp/
+data
+*.db
+*.sqlite3
+deploy/data/*
+!deploy/
+!deploy/data/
+!deploy/data/.gitkeep
+deploy/logs/*
+!deploy/logs/
+!deploy/logs/.gitkeep
+
+# Frontend artifacts
+node_modules/
+frontend/assets/workbench/*
+
+# IDE / local tooling
+.vscode/
+.idea/
+.trae/
+.claude/
+
+logs
